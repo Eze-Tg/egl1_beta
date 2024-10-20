@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'degenerate_trading'
+STICKER_NAME = 'Gnon_sticker_graphics_government'
 
-project_group_link = 'https://t.me/+tucBgO4uqz1jODJl'
+project_group_link = 'https://t.me/+3GA4hMhHz15lNmYy'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'tucBgO4uqz1jODJl'
+project_short_name = '3GA4hMhHz15lNmYy'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
