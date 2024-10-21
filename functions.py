@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'Gnon_sticker_graphics_government'
+STICKER_NAME = 'TOPGaniev_by_fStikBot'
 
-project_group_link = 'https://t.me/+3GA4hMhHz15lNmYy'
+project_group_link = 'https://t.me/+Em9L1p2C8-g2ZThl'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = '3GA4hMhHz15lNmYy'
+project_short_name = 'Em9L1p2C8-g2ZThl'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
@@ -368,7 +368,7 @@ def add_numbers_to_group(profiles):
                 secondary_group = client(ImportChatInviteRequest(hash=project_short_name))
             except UserAlreadyParticipantError:
                 secondary_group = client.get_entity(project_group_link)
-            
+
             except InviteHashExpiredError:
                 print(f'{ye}GROUP LINK ERROR OR GROUP DELETED{rs}')
                 return
