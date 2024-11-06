@@ -34,11 +34,11 @@ API_HASH = os.getenv('API_HASH')
 
 STICKER_NAME = 'Scf_stickers'
 
-project_group_link = 'https://t.me/+r70OuQfaRv5hNDgx'
+project_group_link = 'https://t.me/+oQVWip_fz5RlYzY1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'r70OuQfaRv5hNDgx'
+project_short_name = 'oQVWip_fz5RlYzY1'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
