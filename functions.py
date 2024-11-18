@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'CheyenneStickers'
+STICKER_NAME = 'wenmoonpack'
 
-project_group_link = 'https://t.me/+uYaq-i7h1IU2Y2I1'
+project_group_link = 'https://t.me/+sZRRvL0vl0phYTg9'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'uYaq-i7h1IU2Y2I1'
+project_short_name = 'sZRRvL0vl0phYTg9'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
