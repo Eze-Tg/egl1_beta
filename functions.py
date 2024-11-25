@@ -32,7 +32,7 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'GameEmoji'
+STICKER_NAME = 'wenmoonpack'
 
 project_group_link = 'https://t.me/+d36cTJNG7YEzNTM1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
