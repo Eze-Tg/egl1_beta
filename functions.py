@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'USDSITCOM_by_fStikBot'
+STICKER_NAME = 'CryptoNotes'
 
-project_group_link = 'https://t.me/+3QlS7SBXSmM2ZjI1'
+project_group_link = 'https://t.me/+bkYxs4mGb-tlNjU1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = '3QlS7SBXSmM2ZjI1'
+project_short_name = 'bkYxs4mGb-tlNjU1'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
