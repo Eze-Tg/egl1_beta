@@ -75,7 +75,7 @@ def get_sticker_info():
 
 # Step 3: Ask user for the number of messages to be sent
 def get_number_of_messages():
-    number_of_messages = int(input("How many messages do you want to send? "))
+    number_of_messages = int(input("How many messages do you want to send? : "))
     return number_of_messages
 
 # Step 4: Extract the length of sticker set using the client
