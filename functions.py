@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'captaindolan'
+STICKER_NAME = 'SKITWO'
 
-project_group_link = 'https://t.me/+1asQM8n4Vv9mNGEy'
+project_group_link = 'https://t.me/+md1K6U_WPpZlZDNl'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = '1asQM8n4Vv9mNGEy'
+project_short_name = 'md1K6U_WPpZlZDNl'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
