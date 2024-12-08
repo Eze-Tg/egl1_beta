@@ -32,7 +32,7 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'degenerate_trading'
+STICKER_NAME = 'Honey2803'
 
 project_group_link = 'https://t.me/+mWHh2tcUg4IyMmM1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
