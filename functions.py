@@ -34,11 +34,11 @@ API_HASH = os.getenv('API_HASH')
 
 STICKER_NAME = 'Biaotokensol'
 
-project_group_link = 'https://t.me/+wnJKbd1ps6Y3Zjg9'
+project_group_link = 'https://t.me/+BtoFtP0QYzpkNDE1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'wnJKbd1ps6Y3Zjg9'
+project_short_name = 'BtoFtP0QYzpkNDE1'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
