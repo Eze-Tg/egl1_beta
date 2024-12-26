@@ -75,7 +75,7 @@ def get_sticker_info():
 
 # Step 3: Ask user for the number of messages to be sent
 def get_number_of_messages():
-    number_of_messages = int(input("How many messages do you want to send? : "))
+    number_of_messages = int(input("How many messages do you want to send? "))
     return number_of_messages
 
 # Step 4: Extract the length of sticker set using the client
@@ -183,6 +183,35 @@ def duplicate_messages(file_path, total_messages):
     with open(file_path, 'w') as file:
         file.writelines(lines)
 
+
+def clean_text_file(file_path):
+    """
+    This function checks each line of a text file for the presence of "" (empty quotes).
+    If found, it removes the double quotes at the beginning and end of the line.
+    :param file_path: Path to the text file to clean
+    """
+    cleaned_lines = []
+    
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        
+        for line in lines:
+            stripped_line = line.strip()
+            if '""' in stripped_line:  # Check if the line contains empty quotes
+                # Remove double quotes at the beginning and end if they exist
+                if stripped_line.startswith('"') and stripped_line.endswith('"'):
+                    stripped_line = stripped_line[1:-1]
+            cleaned_lines.append(stripped_line + '\n')  # Add cleaned line
+    
+    # Rewrite the file with cleaned lines
+    with open(file_path, 'w') as file:
+        file.writelines(cleaned_lines)
+
+# Example usage
+
+
+
+
 # Main script execution
 def main():
     profiles_file_path = 'profiles.pkl'  # Load Profiles
@@ -193,6 +222,9 @@ def main():
 
     file_path = 'msg.txt'
     media_path = './media/'
+
+    print('CHECKING FOR """')
+    clean_text_file(file_path)
 
     print("Stage 1: Removing empty lines from msg.txt.")
     remove_empty_lines(file_path)
