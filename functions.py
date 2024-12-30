@@ -32,7 +32,7 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'AskAnyGPT'
+STICKER_NAME = 'Cryptographica'
 
 project_group_link = 'https://t.me/+-iwh1WJ-B4c1M2Vl'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
