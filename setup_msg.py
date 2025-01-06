@@ -90,26 +90,34 @@ def get_sticker_set_length(client, sticker_name):
 
 # Step 5: Randomly add "sticker:1 - sticker:n" to the msg.txt file with each appearing 3 times
 def add_stickers_to_file(file_path, sticker_length):
-    stickers = [f"sticker:{i}\n" for i in range(1, sticker_length + 1)] * 3
+    stickers = [f"sticker:{i}\n" for i in range(1, sticker_length + 1)] * 10
     random.shuffle(stickers)
 
     with open(file_path, 'r') as file:
-        existing_lines = file.readlines()
+        lines = file.readlines()
 
-    # Insert stickers randomly into existing lines without shuffling the existing lines
+    total_lines = len(lines)
+    print("\nTotal lines : %d\n" % total_lines)
+
+    total_stickers = len(stickers)
+    print("\nTotal stickers : %d\n" % total_stickers)
+
+    interval = max(1, total_lines // total_stickers)
+
+
     new_lines = []
-    for line in existing_lines:
-        new_lines.append(line)
-        if stickers and random.random() < 0.2:  # 20% chance to insert a sticker
-            new_lines.append(stickers.pop())
+    sticker_index = 0
 
-    # Add any remaining stickers at random positions
-    while stickers:
-        insert_position = random.randint(0, len(new_lines))
-        new_lines.insert(insert_position, stickers.pop())
+    for i, line in enumerate(lines):
+        new_lines.append(line)
+        if sticker_index < total_stickers and (i + 1) % interval == 0:
+            new_lines.append(stickers[sticker_index])
+            sticker_index += 1
 
     with open(file_path, 'w') as file:
         file.writelines(new_lines)
+
+
 
 # Step 6: Find out the number of mp4/jpg in the media folder
 def count_media_files(media_path):
@@ -144,27 +152,30 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
     for i in range(jpg_count + 1, jpg_count + mp4_count + 1):
         media_entries.append(f"media:./media/med{i}.mp4\n")
 
-    # Add each media entry 4 times
-    media_entries *= 4
+    # Add each media entry 8 times
+    media_entries *= 15
     random.shuffle(media_entries)
 
     with open(file_path, 'r') as file:
-        existing_lines = file.readlines()
+        lines = file.readlines()
 
-    # Insert media entries randomly into existing lines without shuffling the existing lines
+    total_lines = len(lines)
+    total_media = len(media_entries)
+    print(f"\n Total Media : {total_media} ")
+    interval = max(1, total_lines // total_media)
+
     new_lines = []
-    for line in existing_lines:
-        new_lines.append(line)
-        if media_entries and random.random() < 0.2:  # 20% chance to insert media
-            new_lines.append(media_entries.pop())
+    media_index = 0
 
-    # Add any remaining media at random positions
-    while media_entries:
-        insert_position = random.randint(0, len(new_lines))
-        new_lines.insert(insert_position, media_entries.pop())
+    for i, line in enumerate(lines):
+        new_lines.append(line)
+        if media_index < total_media and (i + 1) % interval == 0:
+            new_lines.append(media_entries[media_index])
+            media_index += 1
 
     with open(file_path, 'w') as file:
         file.writelines(new_lines)
+
 
 # Step 10: Duplicate total number of messages until number is reached
 def duplicate_messages(file_path, total_messages):
@@ -226,19 +237,19 @@ def main():
     print('CHECKING FOR """')
     clean_text_file(file_path)
 
-    print("Stage 1: Removing empty lines from msg.txt.")
+    print("\nStage 1: Removing empty lines from msg.txt.")
     remove_empty_lines(file_path)
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 2: Getting sticker information from user.")
+    print("\nStage 2: Getting sticker information from user.")
     sticker_name = get_sticker_info()
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 3: Asking user for the number of messages.")
+    print("\nStage 3: Asking user for the number of messages.")
     number_of_messages = get_number_of_messages()
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 4: Extracting sticker set length.")
+    print("\nStage 4: Extracting sticker set length.")
     client = authenticated_client(profiles)
     if client is None:
         print("Failed to authenticate client. Exiting.")
@@ -246,32 +257,32 @@ def main():
     sticker_length = get_sticker_set_length(client, sticker_name)
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 5: Adding stickers to msg.txt file.")
+    print("\nStage 5: Adding stickers to msg.txt file.")
     add_stickers_to_file(file_path, sticker_length)
     print("Stickers added successfully.")
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 6: Counting media files in the media folder.")
+    print("\nStage 6: Counting media files in the media folder.")
     jpg_count, mp4_count = count_media_files(media_path)
     print(f"Found {jpg_count} JPG files and {mp4_count} MP4 files.")
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 7: Renaming JPG files.")
+    print("\nStage 7: Renaming JPG files.")
     last_jpg_number = rename_jpg_files(media_path)
     print(f"Renamed JPG files up to med{last_jpg_number}.jpg")
     input("Press Enter to proceed to the next step...")
 
-    print(f"Stage 8: Renaming MP4 files starting from med{last_jpg_number + 1}.")
+    print(f"\nStage 8: Renaming MP4 files starting from med{last_jpg_number + 1}.")
     rename_mp4_files(media_path, last_jpg_number)
     print("MP4 files renamed successfully.")
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 9: Adding media files to msg.txt.")
+    print("\nStage 9: Adding media files to msg.txt.")
     add_media_to_file(file_path, media_path, jpg_count, mp4_count)
     print("Media files added successfully.")
     input("Press Enter to proceed to the next step...")
 
-    print("Stage 10: Duplicating messages in msg.txt.")
+    print("\nStage 10: Duplicating messages in msg.txt.")
     duplicate_messages(file_path, number_of_messages)
     print("Messages duplicated successfully.")
 
