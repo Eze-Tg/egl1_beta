@@ -5,9 +5,29 @@ from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetShortName
+from colorama import init, Fore
 import socks
 import csv
 import pickle
+
+
+
+init()
+r = Fore.RED
+lg = Fore.GREEN
+rs = Fore.RESET
+w = Fore.WHITE
+cy = Fore.CYAN
+ye = Fore.YELLOW
+n = Fore.RESET
+colors = [r, lg, w, ye, cy]
+info = lg + '(' + w + 'i' + lg + ')' + rs
+error = lg + '(' + r + '!' + lg + ')' + rs
+success = w + '(' + lg + '*' + w + ')' + rs
+INPUT = lg + '(' + cy + '~' + lg + ')' + rs
+plus = lg + '(' + w + '+' + lg + ')' + rs
+
+
 
 # Define the Profile class (example)
 class Profile:
@@ -70,12 +90,12 @@ def remove_empty_lines(file_path):
 
 # Step 2: Ask user for link to or name of sticker
 def get_sticker_info():
-    sticker_name = input("Please enter the name or link of the sticker set: ")
+    sticker_name = input(f"{w}Please enter the name or link of the sticker set: {rs}")
     return sticker_name
 
 # Step 3: Ask user for the number of messages to be sent
 def get_number_of_messages():
-    number_of_messages = int(input("How many messages do you want to send? "))
+    number_of_messages = int(input(f"\n{w}How many messages do you want to send? : {rs}"))
     return number_of_messages
 
 # Step 4: Extract the length of sticker set using the client
@@ -242,15 +262,15 @@ def main():
 
     print("\nStage 1: Removing empty lines from msg.txt.")
     remove_empty_lines(file_path)
-    input("Press Enter to proceed to the next step...")
+    input(f"{lg}Press Enter to proceed to the next step...{rs}")
 
     print("\nStage 2: Getting sticker information from user.")
     sticker_name = get_sticker_info()
-    input("Press Enter to proceed to the next step...")
+    input(f"{lg}Press Enter to proceed to the next step...{rs}")
 
-    print("\nStage 3: Asking user for the number of messages.")
+    # print("\nStage 3: Asking user for the number of messages.")
     number_of_messages = get_number_of_messages()
-    input("Press Enter to proceed to the next step...")
+    input(f"\nPress Enter to proceed to the next step...")
 
     print("\nStage 4: Extracting sticker set length.")
     client = authenticated_client(profiles)
