@@ -152,8 +152,8 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
     for i in range(jpg_count + 1, jpg_count + mp4_count + 1):
         media_entries.append(f"media:./media/med{i}.mp4\n")
 
-    # Add each media entry 8 times
-    media_entries *= 15
+    # Add each media entry 25 times
+    media_entries *= 50
     random.shuffle(media_entries)
 
     with open(file_path, 'r') as file:
