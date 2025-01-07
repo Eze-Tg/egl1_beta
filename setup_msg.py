@@ -90,29 +90,32 @@ def get_sticker_set_length(client, sticker_name):
 
 # Step 5: Randomly add "sticker:1 - sticker:n" to the msg.txt file with each appearing 3 times
 def add_stickers_to_file(file_path, sticker_length):
-    stickers = [f"sticker:{i}\n" for i in range(1, sticker_length + 1)] * 10
+    # Create a list of stickers, each repeated up to 30 times
+    stickers = [f"sticker:{i}\n" for i in range(1, sticker_length + 1)] * 30
     random.shuffle(stickers)
 
     with open(file_path, 'r') as file:
         lines = file.readlines()
 
     total_lines = len(lines)
-    print("\nTotal lines : %d\n" % total_lines)
-
     total_stickers = len(stickers)
-    print("\nTotal stickers : %d\n" % total_stickers)
-
+    print(f'Total sticker : {total_stickers}')
     interval = max(1, total_lines // total_stickers)
-
 
     new_lines = []
     sticker_index = 0
 
     for i, line in enumerate(lines):
         new_lines.append(line)
+        # Insert stickers at regular intervals
         if sticker_index < total_stickers and (i + 1) % interval == 0:
             new_lines.append(stickers[sticker_index])
             sticker_index += 1
+
+    # Add any remaining stickers at the end, if not inserted
+    while sticker_index < total_stickers:
+        new_lines.append(stickers[sticker_index])
+        sticker_index += 1
 
     with open(file_path, 'w') as file:
         file.writelines(new_lines)
@@ -152,7 +155,7 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
     for i in range(jpg_count + 1, jpg_count + mp4_count + 1):
         media_entries.append(f"media:./media/med{i}.mp4\n")
 
-    # Add each media entry 25 times
+    # Add each media entry 50 times
     media_entries *= 50
     random.shuffle(media_entries)
 
