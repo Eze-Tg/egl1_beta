@@ -34,11 +34,11 @@ API_HASH = os.getenv('API_HASH')
 
 STICKER_NAME = 'AskAnyGPT'
 
-project_group_link = 'https://t.me/+IrIjNlf1kqU4OGU1'
+project_group_link = 'https://t.me/+TcUt4eKQ-Iw3ODc1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'IrIjNlf1kqU4OGU1'
+project_short_name = 'TcUt4eKQ-Iw3ODc1'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
