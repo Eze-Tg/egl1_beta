@@ -90,8 +90,8 @@ def get_sticker_set_length(client, sticker_name):
 
 # Step 5: Randomly add "sticker:1 - sticker:n" to the msg.txt file with each appearing 3 times
 def add_stickers_to_file(file_path, sticker_length):
-    # Create a list of stickers, each repeated up to 30 times
-    stickers = [f"sticker:{i}\n" for i in range(1, sticker_length + 1)] * 30
+    # Create a list of stickers, each repeated up to 50 times
+    stickers = [f"sticker:{i}\n" for i in range(1, sticker_length + 1)] * 50
     random.shuffle(stickers)
 
     with open(file_path, 'r') as file:
@@ -155,8 +155,8 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
     for i in range(jpg_count + 1, jpg_count + mp4_count + 1):
         media_entries.append(f"media:./media/med{i}.mp4\n")
 
-    # Add each media entry 50 times
-    media_entries *= 50
+    # Add each media entry 100 times
+    media_entries *= 100
     random.shuffle(media_entries)
 
     with open(file_path, 'r') as file:
