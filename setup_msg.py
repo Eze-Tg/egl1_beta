@@ -9,6 +9,7 @@ from colorama import init, Fore
 import socks
 import csv
 import pickle
+import time
 
 
 
@@ -70,11 +71,11 @@ def authenticated_client(profiles):
         print(f'Phone Number here is {profiles[0].phone_number}')
         client.connect()
         if not client.is_user_authorized():
-            print(f'{profiles[0].phone_number} is Unauthorized \n')
+            print(f'{r}{profiles[0].phone_number} is Unauthorized {rs}\n')
             print('You need TO RELOGIN THIS USER, DELETING THIS USER NOW')
             pass
         else:
-            print('Client is successfully authenticated.')
+            print(f'{lg}Client is successfully authenticated.{rs}')
             return client
     except Exception as e:
         print(f"Error in client authentication: {e}")
@@ -90,12 +91,12 @@ def remove_empty_lines(file_path):
 
 # Step 2: Ask user for link to or name of sticker
 def get_sticker_info():
-    sticker_name = input(f"{w}Please enter the name or link of the sticker set: {rs}")
+    sticker_name = input(f"{ye}Please enter the name or link of the sticker set: ")
     return sticker_name
 
 # Step 3: Ask user for the number of messages to be sent
 def get_number_of_messages():
-    number_of_messages = int(input(f"\n{w}How many messages do you want to send? : {rs}"))
+    number_of_messages = int(input(f"\n{ye}How many messages do you want to send? : "))
     return number_of_messages
 
 # Step 4: Extract the length of sticker set using the client
@@ -184,7 +185,7 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
 
     total_lines = len(lines)
     total_media = len(media_entries)
-    print(f"\n Total Media : {total_media} ")
+    print(f"{lg}Total Media : {total_media}{rs} ")
     interval = max(1, total_lines // total_media)
 
     new_lines = []
@@ -198,6 +199,8 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
 
     with open(file_path, 'w') as file:
         file.writelines(new_lines)
+
+    return total_media
 
 
 # Step 10: Duplicate total number of messages until number is reached
@@ -257,57 +260,62 @@ def main():
     file_path = 'msg.txt'
     media_path = './media/'
 
-    print('CHECKING FOR """')
+    print(f'{w}CHECKING FOR """')
     clean_text_file(file_path)
 
-    print("\nStage 1: Removing empty lines from msg.txt.")
+    print(f"\n{w}Stage 1: Removing empty lines from msg.txt.")
     remove_empty_lines(file_path)
-    input(f"{lg}Press Enter to proceed to the next step...{rs}")
+    # input(f"{lg}Press Enter to proceed to the next step...{rs}")
 
     print("\nStage 2: Getting sticker information from user.")
     sticker_name = get_sticker_info()
-    input(f"{lg}Press Enter to proceed to the next step...{rs}")
+    # input(f"{lg}Press Enter to proceed to the next step...{rs}")
 
     # print("\nStage 3: Asking user for the number of messages.")
     number_of_messages = get_number_of_messages()
-    input(f"\nPress Enter to proceed to the next step...")
+    # input(f"\nPress Enter to proceed to the next step...")
 
-    print("\nStage 4: Extracting sticker set length.")
+    print(f"\n{w}Stage 4: Extracting sticker set length.")
     client = authenticated_client(profiles)
     if client is None:
         print("Failed to authenticate client. Exiting.")
         return
     sticker_length = get_sticker_set_length(client, sticker_name)
-    input("Press Enter to proceed to the next step...")
+    time.sleep(0.5)
+    # input("Press Enter to proceed to the next step...")
 
-    print("\nStage 5: Adding stickers to msg.txt file.")
+    print(f"\n{w}Stage 5: Adding stickers to msg.txt file.")
     add_stickers_to_file(file_path, sticker_length)
     print("Stickers added successfully.")
-    input("Press Enter to proceed to the next step...")
+    time.sleep(0.5)
+    # input("Press Enter to proceed to the next step...")
 
-    print("\nStage 6: Counting media files in the media folder.")
+    print(f"\n{w}Stage 6: Counting media files in the media folder.")
     jpg_count, mp4_count = count_media_files(media_path)
-    print(f"Found {jpg_count} JPG files and {mp4_count} MP4 files.")
-    input("Press Enter to proceed to the next step...")
+    print(f"{lg}Found {jpg_count} JPG files and {mp4_count} MP4 files.{rs}")
+    time.sleep(0.5)
+    # input("Press Enter to proceed to the next step...")
 
-    print("\nStage 7: Renaming JPG files.")
+    print(f"\n{w}Stage 7: Renaming JPG files.")
     last_jpg_number = rename_jpg_files(media_path)
-    print(f"Renamed JPG files up to med{last_jpg_number}.jpg")
-    input("Press Enter to proceed to the next step...")
+    print(f"{lg}Renamed JPG files up to med{last_jpg_number}.jpg{rs}")
+    time.sleep(0.5)
+    # input("Press Enter to proceed to the next step...")
 
-    print(f"\nStage 8: Renaming MP4 files starting from med{last_jpg_number + 1}.")
+    print(f"\n{w}Stage 8: Renaming MP4 files starting from med{last_jpg_number + 1}.")
     rename_mp4_files(media_path, last_jpg_number)
-    print("MP4 files renamed successfully.")
-    input("Press Enter to proceed to the next step...")
+    print(f"{lg}MP4 files renamed successfully.{rs}")
+    time.sleep(0.5)
+    # input("Press Enter to proceed to the next step...")
 
-    print("\nStage 9: Adding media files to msg.txt.")
-    add_media_to_file(file_path, media_path, jpg_count, mp4_count)
-    print("Media files added successfully.")
-    input("Press Enter to proceed to the next step...")
+    print(f"\n{w}Stage 9: Adding media files to msg.txt.")
+    media_count = add_media_to_file(file_path, media_path, jpg_count, mp4_count)
+    print(f"{lg}{media_count} Media files added successfully.{rs}")
+    # input("Press Enter to proceed to the next step...")
 
-    print("\nStage 10: Duplicating messages in msg.txt.")
+    print(f"\n{w}Stage 10: Duplicating messages in msg.txt.")
     duplicate_messages(file_path, number_of_messages)
-    print("Messages duplicated successfully.")
+    print(f"{lg}Messages duplicated successfully\n{rs}.")
 
 if __name__ == "__main__":
     main()
