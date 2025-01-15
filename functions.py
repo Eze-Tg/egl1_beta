@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'AskAnyGPT'
+STICKER_NAME = 'PAALanimated'
 
-project_group_link = 'https://t.me/+3UYUTiW13aUzNTBl'
+project_group_link = 'https://t.me/+Zt4qjQicKCczYTQ1'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = '3UYUTiW13aUzNTBl'
+project_short_name = 'Zt4qjQicKCczYTQ1'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
