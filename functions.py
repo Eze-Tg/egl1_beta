@@ -32,13 +32,13 @@ API_HASH = os.getenv('API_HASH')
 # STICKER_NAME = os.getenv('STICKER_NAME')
 
 
-STICKER_NAME = 'pumpdev'
+STICKER_NAME = 'AskAnyGPT'
 
-project_group_link = 'https://t.me/+VRCTPC3UpJc1MGVl'
+project_group_link = 'https://t.me/+Zn8RoswthoAwZmEx'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'VRCTPC3UpJc1MGVl'
+project_short_name = 'Zn8RoswthoAwZmEx'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
