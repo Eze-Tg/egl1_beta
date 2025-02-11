@@ -1065,6 +1065,64 @@ def start_msg_sending():
                             current_profile_index = (
                                 current_profile_index + 1) % total_profiles
                         print(f'{ye}***FNISH 3 Replies')
+                    
+                    elif current_profile_index == 71:  # ALPHA SENDER PROFILE 61 WITH 10 RESPONCE
+                        alpha_msg_id = alpha_senders(
+                            profiles, current_profile_index, current_message, group, sticker_set)
+                        print(f'{info}{lg}ALPHA SENDER MSG ID {alpha_msg_id}')
+                        sending_status(current_profile,
+                                       current_message_index, current_message)
+
+                        current_message_index += 1
+                        current_profile_index = (
+                            current_profile_index + 1) % total_profiles
+
+                        print(f"{info}{ye}****SENDING 4 REPLIEs\n")
+                        for x in range(4):
+                            time.sleep(sleep_time)
+                            current_message = messages[current_message_index]
+                            current_profile = profiles[current_profile_index]
+
+                            print(
+                                f'\n{info}REPLYING TO Message ID {alpha_msg_id} from {current_profile.user_id}')
+
+                            responders(profiles, current_profile_index, current_message, group, alpha_msg_id, sticker_set)
+
+                            sending_status(current_profile, current_message_index, current_message)
+                            x += 1
+                            current_message_index += 1
+                            current_profile_index = (
+                                current_profile_index + 1) % total_profiles
+                        print(f'{ye}***FNISH 4 Replies')
+                    
+                    elif current_profile_index == 81:  # ALPHA SENDER PROFILE 61 WITH 10 RESPONCE
+                        alpha_msg_id = alpha_senders(
+                            profiles, current_profile_index, current_message, group, sticker_set)
+                        print(f'{info}{lg}ALPHA SENDER MSG ID {alpha_msg_id}')
+                        sending_status(current_profile,
+                                       current_message_index, current_message)
+
+                        current_message_index += 1
+                        current_profile_index = (
+                            current_profile_index + 1) % total_profiles
+
+                        print(f"{info}{ye}****SENDING 5 REPLIEs\n")
+                        for x in range(5):
+                            time.sleep(sleep_time)
+                            current_message = messages[current_message_index]
+                            current_profile = profiles[current_profile_index]
+
+                            print(
+                                f'\n{info}REPLYING TO Message ID {alpha_msg_id} from {current_profile.user_id}')
+
+                            responders(profiles, current_profile_index, current_message, group, alpha_msg_id, sticker_set)
+
+                            sending_status(current_profile, current_message_index, current_message)
+                            x += 1
+                            current_message_index += 1
+                            current_profile_index = (
+                                current_profile_index + 1) % total_profiles
+                        print(f'{ye}***FNISH 5 Replies')
 
                     else:  # Normal profile sends a message
                         alpha_msg_id = alpha_senders(
