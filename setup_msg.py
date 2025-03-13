@@ -150,12 +150,23 @@ def count_media_files(media_path):
     return len(jpg_files), len(mp4_files)
 
 # Step 7: Rename jpg files to "med1.jpg - (medN.jpg)"
+def count_media_files(media_path):
+    jpg_files = [f for f in os.listdir(media_path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    mp4_files = [f for f in os.listdir(media_path) if f.endswith('.mp4')]
+    return len(jpg_files), len(mp4_files)
+
 def rename_jpg_files(media_path):
-    jpg_files = sorted([f for f in os.listdir(media_path) if f.endswith('.jpg')])
-    for i, filename in enumerate(jpg_files, start=1):
-        new_name = f"med{i}.jpg"
+    image_files = []
+    for ext in ['.jpg', '.jpeg', '.png']:
+        image_files.extend(sorted([f for f in os.listdir(media_path) if f.lower().endswith(ext)]))
+    
+    for i, filename in enumerate(image_files, start=1):
+        # Preserve original extension
+        original_ext = os.path.splitext(filename)[1]
+        new_name = f"med{i}{original_ext}"
         os.rename(os.path.join(media_path, filename), os.path.join(media_path, new_name))
-    return len(jpg_files)
+    
+    return len(image_files)
 
 # Step 8: Rename mp4 files continuing from the last number from jpg files
 def rename_mp4_files(media_path, start_number):
@@ -168,15 +179,19 @@ def rename_mp4_files(media_path, start_number):
 def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
     media_entries = []
 
-    # Add jpg files
+    # Add image files with their respective extensions
     for i in range(1, jpg_count + 1):
-        media_entries.append(f"media:./media/med{i}.jpg\n")
+        # Check which extension exists for this media number
+        for ext in ['.jpg', '.jpeg', '.png']:
+            if os.path.exists(os.path.join(media_path, f"med{i}{ext}")):
+                media_entries.append(f"media:./media/med{i}{ext}\n")
+                break
     
     # Add mp4 files
     for i in range(jpg_count + 1, jpg_count + mp4_count + 1):
         media_entries.append(f"media:./media/med{i}.mp4\n")
 
-    # Add each media entry 80 times
+    # Multiply and shuffle media entries
     media_entries *= 80
     random.shuffle(media_entries)
 
@@ -200,6 +215,7 @@ def add_media_to_file(file_path, media_path, jpg_count, mp4_count):
     with open(file_path, 'w') as file:
         file.writelines(new_lines)
 
+    return total_media
     return total_media
 
 
