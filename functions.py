@@ -34,10 +34,10 @@ API_HASH = os.getenv('API_HASH')
 
 STICKER_NAME = 'AskAnyGPT'
 
-project_group_link = 'https://t.me/+0FSa-XxDLkAxYmU1'
+project_group_link = 'https://t.me/+9fALzXMsOgFiZDRl'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = '0FSa-XxDLkAxYmU1'
+project_short_name = '9fALzXMsOgFiZDRl'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
@@ -562,12 +562,12 @@ def responders(profiles, current_profile_index, current_message, group, alpha_me
                     sticker_number = int(current_message[8:])
                     print(f'STICKER NUMBER IS : {sticker_number}')
                     send_uploading_sticker(responder_client, group_entity)
-                    time.sleep(4)
+                    time.sleep(3)
                     responder_client.send_file(
                         group_entity, sticker_set.documents[sticker_number], reply_id=alpha_message_id)
                 else:
                     send_typing(responder_client, group_entity)
-                    time.sleep(4)  # Sleep for 2 seconds to simulate typing
+                    time.sleep(3)  # Sleep for 2 seconds to simulate typing
                     send_message(responder_client, group_entity,
                                  current_message, reply_to_message_id=alpha_message_id)
                 send_reaction(profiles, group,
@@ -660,7 +660,7 @@ def alpha_senders(profiles, current_profile_index, current_message, group, stick
         except Exception as e:
             print(f'The Curprit is {e}')
             print(f'Naija film na trash, Got to del this user!')
-            # delete_profile(current_profile_index, profile, profiles_file_path)
+            delete_profile(current_profile_index, profile)
             pass
     except AuthKeyDuplicatedError as authkeyerror:
         print(f'Error here is :::: {authkeyerror}')
