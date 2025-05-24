@@ -15,7 +15,7 @@ import socks
 from dotenv import find_dotenv, load_dotenv
 import csv
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
-from telethon import functions, types
+from telethon import functions, types, errors
 from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
 from telethon.tl.functions.messages import SendReactionRequest, GetStickerSetRequest, ImportChatInviteRequest
@@ -34,10 +34,10 @@ API_HASH = os.getenv('API_HASH')
 
 STICKER_NAME = 'AskAnyGPT'
 
-project_group_link = 'https://t.me/+8x9qywuOsCk0ZTQx'
+project_group_link = 'https://t.me/+-nm5bupW5IUzNTMx'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = '8x9qywuOsCk0ZTQx'
+project_short_name = '-nm5bupW5IUzNTMx'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
