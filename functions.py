@@ -34,11 +34,11 @@ API_HASH = os.getenv('API_HASH')
 
 STICKER_NAME = 'AskAnyGPT'
 
-project_group_link = 'https://t.me/+PC0xBqXN3vxiYThh'
+project_group_link = 'https://t.me/+ulTMr6YGDQxiOGMx'
 # project_group_link = os.getenv('PROJECT_GROUP_LINK')
 
 # project_short_name = os.getenv('PROJECT_GROUP_LINK_SHORT')
-project_short_name = 'PC0xBqXN3vxiYThh'
+project_short_name = 'ulTMr6YGDQxiOGMx'
 
 # project_group_id  = os.getenv('GROUP_ID')
 # project_group_id = -1002172471915
@@ -274,7 +274,7 @@ def send_typing(client, entity):
 def send_uploading(client, entity):
     try:
         client(functions.messages.SetTypingRequest(
-            entity, types.SendMessageUploadPhotoAction(7)))
+            entity, types.SendMessageUploadPhotoAction(5)))
     except (PhoneNumberInvalidError, UserWarning, ValueError):
         print(f'The issue is from Typing; dancing!')
         pass
